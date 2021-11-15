@@ -15,22 +15,36 @@
   </head>
   <body>
     <div class="container">
+      <div class="weather-app">
       <h1>City</h1>
-      <h3>day, date and time</h3>
+      <p>day, date and time</p>
       <div class="row">
-        <div class="col-md-6">temp</div>
-        <div class="col-md-6">
+        <div class="col-6">
+        <div class="current-temp">25°</div> 
+        <div class="todays-high-and-low">
+          10°/31°
+        </div>
+        <div class="converstion">°C / °F</div>
+        
+        </div>
+        <div class="col-6">
           <ul>
-            <li>feels like</li>
-            <li>condition</li>
-            <li>humidity</li>
-            <li>wind</li>
+            <li>Feels like 18°</li>
+            <li>Heavy Showers</li>
+            <li>Humidity: 56%</li>
+            <li>Wind: 9km/h</li>
           </ul>
         </div>
       </div>
-
-      <a href="" class="btn btn-primary">click me</a>
+      <div class="image-container"><img src="images/undraw_Autumn_re_rwy0.png" alt="Rainy day image"></div>
+      <small>
+        <a href="https://github.com/ClaraLlama/Vanilla-Weather-App-Project"
+          >open-source code</a>
+        by Krystle Marshall
+      </small>
     </div>
+  </div>
+  </div>
     <script src="scr/app.js"></script>
   </body>
 </html>
