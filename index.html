@@ -34,25 +34,24 @@
         </div>
      <div class="under-search-bar"> 
        <div class="row">
-       <div class="col-6"> <span class="date" id="right-now">day, date and time</span></div>
-       <div class="col-6"><span class="conversion"><a href="#">°C</a> / <a href="#">°F</a></span></div>
+       <div class="col-6">Last updated: <span class="date" id="right-now">day, date and time</span></div>
+       <div class="col-6"><span class="conversion"><a href="#" id="celsius-link" class="active" class="c-link">°C</a> / <a href="#" id="fahrenheit-link" class="link">°F</a></span></div>
       </div>
     </div> 
       <h1 class="city-name">City</h1>
       <div class="row">
         <div class="col-6">
-        <div class="current-temp">25°</div> 
+        <div class="current-temp" ><span id="temperature">25</span>°</div> 
         <div class="todays-high-and-low">
-          10° / 31°
+         <span id="todays-Low">10</span>° / <span id="todays-high">31</span>°
         </div>
-  
         </div>
         <div class="col-6">
           <ul class="conditions-list">
-            <li>Feels like 18°</li>
-            <li>Heavy Showers</li>
-            <li>Humidity: 56%</li>
-            <li>Wind: 9km/h</li>
+            <li id="description">Heavy Showers</li>
+            <li >Feels like <span id="feels-like">18</span>°</li>
+            <li >Humidity: <span id="humidity"> 56</span>% </li>
+            <li >Wind: <span id="wind-speed">9</span> km/h</li>
           </ul>
         </div>
       </div>

@@ -1,3 +1,7 @@
+a {
+  color: #678dc5;
+}
+
 input {
   width: 71%;
   border-radius: 5px;
@@ -8,6 +12,9 @@ input {
 
 li {
   list-style: none;
+}
+li:first-letter {
+  text-transform: capitalize;
 }
 
 .city-name {
@@ -25,7 +32,7 @@ li {
   font-size: 18px;
   font-weight: 600;
   float: right;
-  padding-right: 30px;
+  padding-right: 35px;
 }
 
 .currentLocation {
@@ -39,12 +46,13 @@ li {
   padding: 6px 13px 5px;
   text-align: center;
   border: 1px solid #7ca4de;
+  font-size: 19px;
 }
 
 .currentLocation:hover {
   cursor: pointer;
-  background-color: #2f2e41;
-  border-color: #2f2e41;
+  background-color: #333153;
+  border-color: #333153;
   color: white;
 }
 
@@ -56,9 +64,7 @@ li {
 }
 
 .date {
-  font-size: 16px;
   text-align: left;
-  padding-left: 27px;
 }
 
 .image-container img {
@@ -84,13 +90,33 @@ li {
 
 .searchButton:hover {
   cursor: pointer;
-  background-color: #2f2e41;
-  border-color: #2f2e41;
+  background-color: #333153;
+  border-color: #333153;
   color: white;
 }
 
 .todays-high-and-low {
   text-align: center;
+}
+
+.under-search-bar {
+  padding-left: 30px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.under-search-bar .active {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+
+.under-search-bar .active:hover {
+  text-decoration: none;
+}
+
+.under-search-bar .link:hover {
+  text-decoration: none;
 }
 
 .weather-app-wrapper {

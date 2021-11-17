@@ -1,16 +1,3 @@
-// current position
-function retrievePosition(position) {
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
-  let units = "metric";
-  let apiKey = "06e61b3b1916c0c5dffdf3f2accd815b";
-  let apiEndPoint = "https://api.openweathermap.org/data/2.5/weather";
-  let apiURL = `${apiEndPoint}?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
-  axios.get(apiURL).then(showTemprature);
-}
-
-console.log(retrievePosition);
-
 //time and date
 let span = document.querySelector("span");
 let now = new Date();
@@ -69,21 +56,53 @@ function callAPIreq(searchCity) {
 }
 
 function showTemprature(response) {
-  console.log(response);
   let h1 = document.querySelector("h1");
+  let temperatureElement = document.querySelector("#temperature");
+  let todaysLow = document.querySelector("#todays-Low");
+  let todaysHigh = document.querySelector("#todays-high");
+  let descriptionElement = document.querySelector("#description");
+  let feelsLike = document.querySelector("#feels-like");
+  let humidity = document.querySelector("#humidity");
+  let windSpeed = document.querySelector("#wind-speed");
+
+  celsiusTemp = response.data.main.temp;
+  celsiusTempMin = response.data.main.temp_min;
+  celsiusTempMax = response.data.main.temp_max;
+  celsiusFeelLike = response.data.main.feels_like;
+
   h1.innerHTML = response.data.name;
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  todaysLow.innerHTML = Math.round(response.data.main.temp_min);
+  todaysHigh.innerHTML = Math.round(response.data.main.temp_max);
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  feelsLike.innerHTML = Math.round(response.data.main.feels_like);
+  humidity.innerHTML = response.data.main.humidity;
+  windSpeed.innerHTML = Math.round(response.data.wind.speed);
 }
 
 let form = document.querySelector("#location-search");
 form.addEventListener("submit", search);
 
 // current position
+
+// current position
+function retrievePosition(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let units = "metric";
+  let apiKey = "06e61b3b1916c0c5dffdf3f2accd815b";
+  let apiEndPoint = "https://api.openweathermap.org/data/2.5/weather";
+  let apiURL = `${apiEndPoint}?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
+  axios.get(apiURL).then(showTemprature);
+}
+
+console.log(retrievePosition);
+
 function searchGeolocation(event) {
   event.preventDefault();
   let searchGeoInPut = document.querySelector("#current-location");
   navigator.geolocation.getCurrentPosition(retrievePosition);
   console.log(searchGeoInPut.value);
-  //callAPIreq(searchGeoInPut.value);
 }
 
 function retrievePosition(position) {
@@ -96,5 +115,54 @@ function retrievePosition(position) {
   axios.get(apiURL).then(showTemprature);
 }
 
+function showFahrenheitTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  let todaysLow = document.querySelector("#todays-Low");
+  let todaysHigh = document.querySelector("#todays-high");
+  let feelsLike = document.querySelector("#feels-like");
+
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+
+  let fahrenheitTemperature = (celsiusTemp * 9) / 5 + 32;
+  let fahrenheitTemperatureMin = (celsiusTempMin * 9) / 5 + 32;
+  let fahrenheitTemperatureMax = (celsiusTempMax * 9) / 5 + 32;
+  let fehrenheitFeelsLike = (celsiusFeelLike * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+  todaysLow.innerHTML = Math.round(fahrenheitTemperatureMin);
+  todaysHigh.innerHTML = Math.round(fahrenheitTemperatureMax);
+  feelsLike.innerHTML = Math.round(fehrenheitFeelsLike);
+}
+
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  let todaysLow = document.querySelector("#todays-Low");
+  let todaysHigh = document.querySelector("#todays-high");
+  let feelsLike = document.querySelector("#feels-like");
+
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
+  todaysLow.innerHTML = Math.round(celsiusTempMin);
+  todaysHigh.innerHTML = Math.round(celsiusTempMax);
+  feelsLike.innerHTML = Math.round(celsiusFeelLike);
+}
+
+let celsiusTemp = null;
+let celsiusTempMin = null;
+let celsiusTempMax = null;
+let celsiusFeelLike = null;
+
 let button = document.querySelector("#current-location");
 button.addEventListener("click", searchGeolocation);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheitTemp);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", showCelsiusTemp);
+
+callAPIreq("sydney");
