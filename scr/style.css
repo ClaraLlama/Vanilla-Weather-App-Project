@@ -1,3 +1,11 @@
+input {
+  width: 71%;
+  border-radius: 5px;
+  box-shadow: 4px 4px 3px rgba(180, 179, 179, 0.3);
+  margin-left: 25px;
+  margin-right: 8px;
+}
+
 li {
   list-style: none;
 }
@@ -14,10 +22,30 @@ li {
 }
 
 .conversion {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   float: right;
-  padding-right: 40px;
+  padding-right: 30px;
+}
+
+.currentLocation {
+  color: white;
+  background-color: #7ca4de;
+  border: 1px transparent;
+  border-radius: 5px;
+  margin: 10px 5px;
+  box-shadow: 4px 4px 3px rgba(180, 179, 179, 0.3);
+  transition: all 150ms ease-in-out;
+  padding: 6px 13px 5px;
+  text-align: center;
+  border: 1px solid #7ca4de;
+}
+
+.currentLocation:hover {
+  cursor: pointer;
+  background-color: #2f2e41;
+  border-color: #2f2e41;
+  color: white;
 }
 
 .current-temp {
@@ -30,11 +58,35 @@ li {
 .date {
   font-size: 16px;
   text-align: left;
-  padding-left: 40px;
+  padding-left: 27px;
 }
 
 .image-container img {
   max-width: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+}
+
+.searchButton {
+  color: white;
+  background-color: #7ca4de;
+  border: 1px transparent;
+  border-radius: 5px;
+
+  box-shadow: 4px 4px 3px rgba(180, 179, 179, 0.3);
+  transition: all 150ms ease-in-out;
+  padding: 6px 10px 5px;
+  border: 1px solid #7ca4de;
+  text-align: center;
+}
+
+.searchButton:hover {
+  cursor: pointer;
+  background-color: #2f2e41;
+  border-color: #2f2e41;
+  color: white;
 }
 
 .todays-high-and-low {

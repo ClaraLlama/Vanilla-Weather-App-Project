@@ -13,18 +13,28 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />   
+    <script src="https://kit.fontawesome.com/ce3547f9ac.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <link rel="stylesheet" href="scr/style.css" />
+    
     <title>Weather App</title>
   </head>
   <body>
     <div class="container">
       <div class="weather-app-wrapper">
       <div class="weather-app">
-     
+       <div class="search">
+          <form id="location-search">
+          <input type="text" placeholder="Enter City Here" autocomplete="off" autofocus="on" id="search-input" />
+          <button type="submit" class="searchButton"><i class="fas fa-search"></i></button>
+          <button class="currentLocation" id="current-location"></form>
+            <i class="fas fa-map-marker-alt"></i>
+          </button>
+        </div>
      <div class="under-search-bar"> 
        <div class="row">
-       <div class="col-6"> <span class="date">day, date and time</span></div>
-      
+       <div class="col-6"> <span class="date" id="right-now">day, date and time</span></div>
        <div class="col-6"><span class="conversion"><a href="#">°C</a> / <a href="#">°F</a></span></div>
       </div>
     </div> 
