@@ -64,6 +64,7 @@ function showTemprature(response) {
   let feelsLike = document.querySelector("#feels-like");
   let humidity = document.querySelector("#humidity");
   let windSpeed = document.querySelector("#wind-speed");
+  let iconElement = document.querySelector("#icon");
 
   celsiusTemp = response.data.main.temp;
   celsiusTempMin = response.data.main.temp_min;
@@ -78,6 +79,11 @@ function showTemprature(response) {
   feelsLike.innerHTML = Math.round(response.data.main.feels_like);
   humidity.innerHTML = response.data.main.humidity;
   windSpeed.innerHTML = Math.round(response.data.wind.speed);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 let form = document.querySelector("#location-search");
