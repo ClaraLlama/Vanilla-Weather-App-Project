@@ -89,7 +89,6 @@ function showTemprature(response) {
 let form = document.querySelector("#location-search");
 form.addEventListener("submit", search);
 
-// current position
 
 // current position
 function retrievePosition(position) {
