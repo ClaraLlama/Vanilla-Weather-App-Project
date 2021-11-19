@@ -28,13 +28,6 @@ li:first-letter {
   text-align: center;
 }
 
-.conversion {
-  font-size: 18px;
-  font-weight: 600;
-  float: right;
-  padding-right: 35px;
-}
-
 .currentLocation {
   color: white;
   background-color: #7ca4de;
@@ -120,7 +113,7 @@ li:first-letter {
 }
 
 .weather-app-wrapper {
-  max-width: 600px;
+  max-width: 650px;
   margin: 30px auto;
   font-family: "Kalam", cursive;
   font-size: 18px;
@@ -153,5 +146,5 @@ li:first-letter {
 
 .col-4 {
   padding-top: 15px;
-  padding-bottom: 20px;
+  padding-bottom: 50px;
 }

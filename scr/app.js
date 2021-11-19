@@ -129,42 +129,6 @@ function retrievePosition(position) {
   axios.get(apiURL).then(showTemprature);
 }
 
-function showFahrenheitTemp(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  let todaysLow = document.querySelector("#todays-Low");
-  let todaysHigh = document.querySelector("#todays-high");
-  let feelsLike = document.querySelector("#feels-like");
-
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-
-  let fahrenheitTemperature = (celsiusTemp * 9) / 5 + 32;
-  let fahrenheitTemperatureMin = (celsiusTempMin * 9) / 5 + 32;
-  let fahrenheitTemperatureMax = (celsiusTempMax * 9) / 5 + 32;
-  let fehrenheitFeelsLike = (celsiusFeelLike * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-  todaysLow.innerHTML = Math.round(fahrenheitTemperatureMin);
-  todaysHigh.innerHTML = Math.round(fahrenheitTemperatureMax);
-  feelsLike.innerHTML = Math.round(fehrenheitFeelsLike);
-}
-
-function showCelsiusTemp(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  let todaysLow = document.querySelector("#todays-Low");
-  let todaysHigh = document.querySelector("#todays-high");
-  let feelsLike = document.querySelector("#feels-like");
-
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-
-  temperatureElement.innerHTML = Math.round(celsiusTemp);
-  todaysLow.innerHTML = Math.round(celsiusTempMin);
-  todaysHigh.innerHTML = Math.round(celsiusTempMax);
-  feelsLike.innerHTML = Math.round(celsiusFeelLike);
-}
-
 //display forecast
 function formateDay(timeStamp) {
   let date = new Date(timeStamp * 1000);
@@ -214,11 +178,5 @@ let celsiusFeelLike = null;
 
 let button = document.querySelector("#current-location");
 button.addEventListener("click", searchGeolocation);
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", showFahrenheitTemp);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", showCelsiusTemp);
 
 callAPIreq("sydney");
