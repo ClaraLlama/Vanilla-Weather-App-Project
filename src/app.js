@@ -1,3 +1,68 @@
+let imageMap = {
+  //storms
+  200: `Rain.png`,
+  201: `Rain.png`,
+  202: `Rain.png`,
+  210: `strom.png`,
+  211: `strom.png`,
+  212: `strom.png`,
+  221: `strom.png`,
+  230: `after_the_rain.png`,
+  231: `after_the_rain.png`,
+  232: `after_the_rain.png`,
+  //light rain
+  300: `after_the_rain.png`,
+  301: `after_the_rain.png`,
+  302: `after_the_rain.png`,
+  310: `after_the_rain.png`,
+  311: `after_the_rain.png`,
+  312: `after_the_rain.png`,
+  313: `after_the_rain.png`,
+  314: `after_the_rain.png`,
+  321: `after_the_rain.png`,
+  //rain
+  500: `Rain.png`,
+  501: `Rain.png`,
+  502: `Rain.png`,
+  503: `Rain.png`,
+  504: `Rain.png`,
+  511: `Rain.png`,
+  520: `Rain.png`,
+  521: `Rain.png`,
+  522: `Rain.png`,
+  531: `Rain.png`,
+  //snow
+  600: `snow.png`,
+  601: `snow.png`,
+  602: `snow.png`,
+  611: `snow.png`,
+  612: `snow.png`,
+  613: `snow.png`,
+  615: `snow.png`,
+  616: `snow.png`,
+  620: `snow.png`,
+  621: `snow.png`,
+  622: `snow.png`,
+  //atmosphere
+  701: `atmos.png`,
+  711: `atmos.png`,
+  721: `atmos.png`,
+  731: `atmos.png`,
+  741: `atmos.png`,
+  751: `atmos.png`,
+  761: `atmos.png`,
+  762: `atmos.png`,
+  771: `atmos.png`,
+  781: `atmos.png`,
+  //clear
+  800: `clear.png`,
+  //clouds
+  801: `cloud.png`,
+  802: `cloud.png`,
+  803: `cloud.png`,
+  804: `cloud.png`,
+};
+
 //time and date
 let span = document.querySelector("span");
 let now = new Date();
@@ -84,6 +149,48 @@ function showTemprature(response) {
   todaysLow.innerHTML = Math.round(response.data.main.temp_min);
   todaysHigh.innerHTML = Math.round(response.data.main.temp_max);
   descriptionElement.innerHTML = response.data.weather[0].description;
+  if (
+    response.data.weather[0].icon == "01d" ||
+    response.data.weather[0].icon == "01n"
+  ) {
+    document.getElementById("mainImage").src = "images/clear.png";
+  } else if (
+    response.data.weather[0].icon == "02d" ||
+    response.data.weather[0].icon == "02n" ||
+    response.data.weather[0].icon == "03d" ||
+    response.data.weather[0].icon == "03n" ||
+    response.data.weather[0].icon == "04d" ||
+    response.data.weather[0].icon == "04n"
+  ) {
+    document.getElementById("mainImage").src = "images/cloud.png";
+  } else if (
+    response.data.weather[0].icon == "09d" ||
+    response.data.weather[0].icon == "09n"
+  ) {
+    document.getElementById("mainImage").src = "images/after_the_rain.png";
+  } else if (
+    response.data.weather[0].icon == "10d" ||
+    response.data.weather[0].icon == "10n"
+  ) {
+    document.getElementById("mainImage").src = "images/Rain.png";
+  } else if (
+    response.data.weather[0].icon == "11d" ||
+    response.data.weather[0].icon == "11n"
+  ) {
+    document.getElementById("mainImage").src = "images/storm.png";
+  } else if (
+    response.data.weather[0].icon == "13d" ||
+    response.data.weather[0].icon == "13n"
+  ) {
+    document.getElementById("mainImage").src = "images/snow.png";
+  } else if (
+    response.data.weather[0].icon == "50d" ||
+    response.data.weather[0].icon == "50n"
+  ) {
+    document.getElementById("mainImage").src = "images/atmos.png";
+  } else {
+    document.getElementById("mainImage").src = "images/clear.png";
+  }
   feelsLike.innerHTML = Math.round(response.data.main.feels_like);
   humidity.innerHTML = response.data.main.humidity;
   windSpeed.innerHTML = Math.round(response.data.wind.speed);
@@ -94,6 +201,7 @@ function showTemprature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
   getForecast(response.data.coord);
+  console.log(response);
 }
 
 let form = document.querySelector("#location-search");
